@@ -1,0 +1,9 @@
+{
+  "name": "smark-dev",
+  "version": "0.1.0",
+  "description": "Skills de desenvolvimento do Smark: atuar em work items do Azure DevOps (smark-crm, smark-core, smark-backoffice) e subir o SMark CRM em localhost",
+  "author": {
+    "name": "Smark CRM"
+  },
+  "repository": "https://github.com/SmarkCRM/AI-Plugin"
+}

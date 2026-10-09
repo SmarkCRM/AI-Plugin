@@ -1,0 +1,16 @@
+{
+  "name": "smark",
+  "owner": {
+    "name": "Smark CRM"
+  },
+  "metadata": {
+    "description": "Plugins de skills e agentes para desenvolvimento no Smark"
+  },
+  "plugins": [
+    {
+      "name": "smark-dev",
+      "source": "./plugins/smark-dev",
+      "description": "Fluxo de work items do Azure DevOps (crmsmark/SMark) por repositório e execução local do SMark CRM"
+    }
+  ]
+}

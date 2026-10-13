@@ -107,6 +107,12 @@ Verifique se há resposta clara para:
 
 Antes de concluir que algo falta, procure no código. Se as informações bastarem, siga para o plano. Caso contrário, não implemente.
 
+#### Consultar o especialista (repos `smark-crm` e `smark-backoffice`)
+Quando o work item mexer no CRM ou no BackOffice novo, delegue a busca ao agente `smark-dev:smark-crm-especialista` (Agent tool), em vez de varrer o código às cegas. Passe o título, a descrição, os passos de reprodução, os critérios de aceite, o repo identificado na etapa 2 e a classificação `fix`/`feat`. Peça o que for útil à fase: onde mora a tela ou regra afetada, hipóteses de causa (em `fix`) ou precedente e arquivos por camada (em `feat`), riscos e perguntas em aberto.
+- O agente só lê e aconselha. Confirme no código o que for decisivo antes de levar ao plano, e registre no bloco `[CÓDIGO]` o que veio dele.
+- Ele não resolve dúvida crítica por você: o que ele apontar como pergunta em aberto segue a etapa 5.
+- Se o agente não estiver disponível ou o clone local não existir, siga sem ele e diga isso no `[ANÁLISE]`.
+
 ### 5. Esclarecer dúvidas críticas
 Faça perguntas só quando forem necessárias:
 - uma dúvida por pergunta;
@@ -161,6 +167,8 @@ O plano deve conter:
 - testes previstos;
 - riscos conhecidos;
 - dúvidas não bloqueantes, se houver.
+
+Em `smark-crm` e `smark-backoffice`, se ainda não consultou o `smark-dev:smark-crm-especialista`, peça a ele que revise o rascunho do plano (lacunas, riscos, camadas e impactos cruzados esquecidos) antes de apresentá-lo. O parecer dele melhora o plano, mas não o aprova.
 
 Espere a concordância do usuário com o plano antes da etapa 7.
 

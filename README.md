@@ -8,6 +8,15 @@ Plugin de skills e agentes para desenvolvimento no Smark, distribuído como mark
 |---|---|---|
 | `smark-dev` | `work-item` | Atuar num work item do Azure DevOps (`crmsmark/SMark`): análise, branch, implementação, validação e entrega. Identifica o repositório (`smark-crm`, `smark-core`, `smark-backoffice`) e segue o perfil dele em `skills/work-item/reference/repos/`. |
 | `smark-dev` | `run-crm-local` | Subir o SMark CRM em localhost: Redis, `SiteExpress.SMark.BackOffice.Api` e `SiteExpress.SMark.UI`. |
+| `smark-dev` | `smark-crm-conhecimento` | Base de conhecimento verificada no código: SMark CRM legado 4.8, BackOffice novo e BackOffice MVC 4.8 (legado). Índice em `SKILL.md`, arquivos em `reference/`. |
+
+### Agentes
+
+| Plugin | Agente | Para quê |
+|---|---|---|
+| `smark-dev` | `smark-crm-especialista` | Especialista (somente leitura) no SMark CRM e no BackOffice novo: responde dúvidas e esclarece o planejamento de correção de bug e de melhoria, usando a base de conhecimento e conferindo no clone local. A skill `work-item` o consulta nas etapas 4 e 6 para `smark-crm` e `smark-backoffice`. |
+
+Como acionar: peça pelo nome ("use o `smark-crm-especialista` para analisar este plano"), ou deixe o Claude delegar pela descrição do agente. Instalado, ele aparece como `smark-dev:smark-crm-especialista`.
 
 ## Instalação
 
@@ -52,9 +61,17 @@ As skills `work-item` e `run-crm-local` também existiam em `.claude/skills/` do
 .claude-plugin/marketplace.json        # catálogo do marketplace "smark"
 plugins/smark-dev/
   .claude-plugin/plugin.json           # manifesto do plugin
+  agents/smark-crm-especialista.md     # agente especialista (somente leitura)
   skills/work-item/                    # SKILL.md + reference/ (API e perfis por repo)
   skills/run-crm-local/
+  skills/smark-crm-conhecimento/       # SKILL.md (índice) + reference/{crm,backoffice-novo,backoffice-mvc}/
 ```
+
+## Manter a base de conhecimento
+
+Cada arquivo de `skills/smark-crm-conhecimento/reference/` começa com o commit do repositório em que foi verificado. Depois de mudanças grandes no `smark-crm` ou no `smark-backoffice`, reverifique os arquivos afetados contra o código e atualize esse cabeçalho. Para saber o que mudou: `git log --oneline <commit do cabeçalho>..HEAD -- <caminho>`.
+
+Regra da base: **nunca** colocar valores de segredo (chaves, senhas, connection strings). Os repositórios têm credenciais versionadas; a base só cita caminhos e nomes de chaves. Como este repositório vai para o GitHub, rode uma busca por `password`, `pwd=`, `AKIA`, `Server=` e `Data Source=` antes de cada push.
 
 ## Adicionar um repositório à `work-item`
 
